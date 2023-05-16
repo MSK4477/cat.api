@@ -12,23 +12,29 @@ btn.innerHTML = "Enter"
 div1.append(h1, btn)
 document.body.append(div1)
 btn.addEventListener("click", () => {
+  document.body.style.backgroundColor = "rgb(19, 19, 18)";
   h1.style.display="none"
   btn.style.display="none"
   async function bar() {
     var op = await fetch("https://cataas.com/api/tags")
     var op1 = await op.json()
     console.log(op1)
+    var div3=document.createElement("div")
+    div3.setAttribute("class",'kittys')
+    div3.innerHTML="Kittys"
+    document.body.appendChild(div3);
     for (let i = 0; i < op1.length; i++) {
       var div = document.createElement("div")
-      div.innerHTML = `<table class="table table-dark">
- <thead>
-   <tr>
-     <td scope="col" style="color: yellow;">* ${op1[i]}</td>
-   </tr>
- </thead>`
+      div.setAttribute("class","inner")
+      div.innerHTML = `
+ <ul>
+      ${op1[i]}
+   </ul>`
+ 
       document.body.appendChild(div)
     }
-   
+    document.body.style.backgroundImage = "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScnf6PbRNG3Bm71MTKW5SeCjx0uAtZpbyCbw&usqp=CAU')";
+
   }
   bar()
   })
